@@ -1,24 +1,29 @@
 version: 2
 jobs:
-  job1:
+  test:
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/node:8.9.4
     steps:
       - checkout
-      - run: echo "hello world1"
-  job2:
+      - run: echo "Testing..."
+  build:
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/node:8.9.4
     steps:
       - checkout
-      - run: echo "hello world2"
+      - run: echo "Buidling..."
+  deploy:
+    docker:
+      - image: circleci/node:8.9.4
+    steps:
+      - checkout
+      - run: echo "Deploying..."
 workflows:
   version: 2
   my_perfect_workflow1:
     jobs:
-      - job1
-      - job2
-  my_perfect_workflow2:
-    jobs:
-      - job1
-      - job2
+      - test
+      - build
+        requires: test
+      - deploy
+        requires: test
