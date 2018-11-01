@@ -3,14 +3,14 @@ version: 2
 default: &default
   docker:
       - image: circleci/node:8.9.4
-    steps:
-      - checkout
-      - restore_cache:
-          key: dummy-{{ checksum "dummy-info.json" }}
-      - save_cache:
-          paths:
-            - dummy_dir
-          key: dummy-{{ checksum "dummy-info.json" }}
+  steps:
+    - checkout
+    - restore_cache:
+        key: dummy-{{ checksum "dummy-info.json" }}
+    - save_cache:
+        paths:
+          - dummy_dir
+        key: dummy-{{ checksum "dummy-info.json" }}
 
 jobs:
   test:
