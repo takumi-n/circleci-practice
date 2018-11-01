@@ -14,7 +14,11 @@ jobs:
       - run: echo "hello world2"
 workflows:
   version: 2
-  my_perfect_workflow:
+  my_perfect_workflow1:
+    jobs:
+      - job1
+      - job2
+  my_perfect_workflow2:
     jobs:
       - job1
       - job2
