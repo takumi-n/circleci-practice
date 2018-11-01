@@ -1,8 +1,20 @@
 version: 2
 jobs:
-  build:
+  job1:
     docker:
       - image: circleci/node:4.8.2
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: echo "hello world1"
+  job2:
+    docker:
+      - image: circleci/node:4.8.2
+    steps:
+      - checkout
+      - run: echo "hello world2"
+workflows:
+  version: 2
+  my_perfect_workflow:
+    jobs:
+      - job1
+      - job2
