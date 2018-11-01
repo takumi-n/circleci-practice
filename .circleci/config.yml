@@ -23,9 +23,9 @@ workflows:
   my_perfect_workflow1:
     jobs:
       - test
-      - build
+      - build:
           requires:
             - test
-      - deploy
+      - deploy:
           requires:
             - build
